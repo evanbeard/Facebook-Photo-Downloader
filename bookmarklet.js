@@ -1,6 +1,9 @@
 (function(){
     // load jquery and don't clobber $ namespace
-    var s=document.createElement('script');s.src='http://code.jquery.com/jquery-1.1.2.js';document.getElementsByTagName('head')[0].appendChild(s);
+    // NB: if copy-pasting this code into the console will need
+    // to paste in and execute the following line before pasting
+    // in the rest of the code
+    var s=document.createElement('script');s.src='http://code.jquery.com/jquery-1.5.1.js';document.getElementsByTagName('head')[0].appendChild(s);
     var jQuery = $.noConflict(true);
 
     var printInstructions = function() {
