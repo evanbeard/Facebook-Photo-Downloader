@@ -1,5 +1,4 @@
-javascript:void(function(){
-
+(function(){
     // load jquery and don't clobber $ namespace
     var s=document.createElement('script');s.src='http://code.jquery.com/jquery-1.1.2.js';document.getElementsByTagName('head')[0].appendChild(s);
     var jQuery = $.noConflict(true);
@@ -42,12 +41,13 @@ javascript:void(function(){
             printInstructions();
 
             // print results
+            var result = "";
             jQuery.each(seenDownloadLinks, function(url, v) { 
-                console.log(url);
+                result += "\n" + url;
             });
+            console.log(result);
         }
     }
     processImages();
-
-}())
+})();
 
