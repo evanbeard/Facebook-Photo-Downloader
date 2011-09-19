@@ -1,4 +1,3 @@
-// first insert jquery onto the page
 javascript:void(function(){
 
     // load jquery and don't clobber $ namespace
@@ -27,14 +26,11 @@ javascript:void(function(){
         PhotoPermalink.pagerClick("prev")
         
         // get second link in the actions box which is the
-        // permanent photo
+        // download link
         var downloadLink = jQuery(jQuery('#fbPhotoPageActions').children()[1]).attr('href');
         
         if(!seenDownloadLinks[downloadLink]) {
-            
-            // the headers on this link usually cause it to download the image
-            // but for some images headers are set incorrectly so we collect the download
-            // links for later
+            // haven't seen this image yet
             seenDownloadLinks[downloadLink] = true;
             
             setTimeout(function(){processImages()},
@@ -42,7 +38,7 @@ javascript:void(function(){
             
         } else {
             // we saw an image we've already seen
-            // so we're looping
+            // so we're finished looping through images
             printInstructions();
 
             // print results
