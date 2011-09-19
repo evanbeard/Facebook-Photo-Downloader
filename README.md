@@ -1,4 +1,5 @@
 # Facebook Photo Downloader
+Download all of the photos in any Facebook album that you have permission to view
 
 ## Instructions
 
