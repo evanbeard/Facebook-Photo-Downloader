@@ -2,9 +2,9 @@
 
 ## Instructions
 
-1) Go to any photo in the album you want to download. The url should look like this "https://www.facebook.com/photo.php?fbid=8532030814&set=a.665432525484.2233540.1310135&type=1". You don't want to be in the theatre (remove "&theatre" from the url to get out of it).
-2) Run the bookmarklet
-3) Follow instructions printed to the console (to use wget to download your images)
+1) Go to any photo in the album you want to download. The url should look like this "https://www.facebook.com/photo.php?fbid=8532030814&set=a.665432525484.2233540.1310135&type=1". You don't want to be in the theatre (remove "&theatre" from the url to get out of it).   
+2) Run the bookmarklet   
+3) Follow instructions printed to the javascript console (you'll use wget to download your images)   
 
 
 ## FAQ
