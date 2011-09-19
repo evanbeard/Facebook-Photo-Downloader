@@ -49,5 +49,5 @@ javascript:void(function(){
     }
     processImages();
 
-}())
+})();
 
