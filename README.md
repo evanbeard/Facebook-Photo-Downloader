@@ -3,13 +3,18 @@ Download all of the photos in any Facebook album that you have permission to vie
 
 ## Instructions
 
-1) Copy the entire [bookmarklet.js](https://raw.github.com/evanbeard/Facebook-Photo-Downloader/master/bookmarklet.js) 
-2) Go to any photo in the album you want to download. The url should look like
-this "https://www.facebook.com/photo.php?fbid=8532030814&set=a.665432525484.2233540.1310135&type=1".
-You don't want to be in the theatre (remove "&theatre" from the url to get out of it).
-3) Open your javascript console and paste in the bookmarklet.js code in its entirety
+1) Copy the entire [bookmarklet.js](https://raw.github.com/evanbeard/Facebook-Photo-Downloader/master/bookmarklet.js)   
+
+2) Go to any photo in the album you want to download. The url should look like this:   
+
+  ``https://www.facebook.com/photo.php?fbid=8532030814&set=a.665432525484.2233540.1310135&type=1``   
+
+You don't want to be in the theatre (remove "&theatre" from the url to get out of it).   
+
+3) Open your javascript console and paste in the bookmarklet.js code in its entirety   
+
 4) Wait while the download goes through all of your photos and collects the download links. When it's finished it will 
-print instructions you can follow to download your images (using wget).
+print instructions you can follow to download your images (using wget).   
 
 
 ## FAQ
