@@ -1,9 +1,22 @@
 javascript:(function(){
 
+    // the below selector will need to be updated as fb changes
+    // their page
+    var DOWNLOAD_LINK_CONTAINER_SELECTOR = '#fbPhotoPageActions',
+
+    // the anchor text for the download link. we have to find the
+    // download link by its anchor text because it currently has no
+    // id or class, and it's not always at the same relative position
+    // in the container for every photo. You must update this string
+    // if you are using a non-english language in facebook
+    DOWNLOAD_LINK_ANCHOR_TEXT = 'Download',
+    
     // delay before paging through to the next photo
     // to download it (adding delay appears more like a human).
-    var CHANGE_PHOTO_DELAY = 1000; // in ms
-
+    CHANGE_PHOTO_DELAY = 200, // in ms
+    
+    JQUERY_LINK = 'http://code.jquery.com/jquery-1.5.1.js';
+    
     var printInstructions = function() {
         var message = "Below a list of urls will be" +
             " printed of all of your images. You should save these" + 
@@ -20,23 +33,27 @@ javascript:(function(){
         var seenDownloadLinks = {};
         
         var processImages = function(){
-            // go to next photo (we call a FB js function). 
-            PhotoPermalink.pagerClick("prev")
+
+            var downloadLinkContainer = jQuery(DOWNLOAD_LINK_CONTAINER_SELECTOR);
+
+            // downloadLink is the link to the photo on FB's CDN
+            var downloadLink = downloadLinkContainer.find(
+                "a:contains('" + DOWNLOAD_LINK_ANCHOR_TEXT + "')").attr('href');
             
-            // get second link in the actions box which is the download link
-            // Note: the below selector will need to be updated as fb changes
-            // their page
-            var downloadLink = jQuery(jQuery('#fbPhotoPageActions').children()[2]).attr('href');
-            // maybe the page hasn't finished loading, so we'll wait another CHANGE_PHOTO_DELAY ms
+            // if we don't have a download link maybe the page hasn't
+            //  finished loading, so we'll wait another CHANGE_PHOTO_DELAY ms
             if(!downloadLink) {
                 setTimeout(function(){processImages()},
                            CHANGE_PHOTO_DELAY);
                 return;
             }
             
+            // if we haven't seen this image yet
             if(!seenDownloadLinks[downloadLink]) {
-                // haven't seen this image yet
                 seenDownloadLinks[downloadLink] = true;
+                
+                // go to next photo (we call a FB js function). 
+                PhotoPermalink.pagerClick("prev")
                 
                 // recurse after a set delay
                 setTimeout(function(){processImages()},
@@ -60,7 +77,9 @@ javascript:(function(){
     }
 
     // load jquery and don't clobber $ namespace
-    var s=document.createElement('script');s.src='http://code.jquery.com/jquery-1.5.1.js';document.getElementsByTagName('head')[0].appendChild(s);
+    var s = document.createElement('script');
+    s.src = JQUERY_LINK;
+    document.getElementsByTagName('head')[0].appendChild(s);
     s.onload = function() {
         var jQuery = $.noConflict(true);
         jQuery(document).ready(run);
